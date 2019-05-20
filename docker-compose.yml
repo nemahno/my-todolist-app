@@ -1,0 +1,11 @@
+version: '3'
+services:
+  web-app:
+    image: lindelani/my-todolist:0.0.1
+    ports:
+      - "8080:8080"
+  web-test:
+    image: lindelani/my-todolist-test:0.0.1
+    environment:
+      # change Ip to your docker IP/ or local host
+      API_URI: http://192.168.99.100:8080

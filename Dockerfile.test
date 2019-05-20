@@ -1,0 +1,18 @@
+# Use the production image as base image
+FROM nema8953/my-todolist-app:0.0.1
+
+# Copy the test files
+COPY tests tests
+
+ENV NODE_ENV dev
+# 1. Get test packages; AND
+# 2. Install our test framework - mocha
+
+
+# 1. Get test packages; AND
+# 2. Install our test framework - mocha
+RUN npm update && \
+    npm install -g mocha
+
+# Override the command, to run the test instead of the application
+CMD ["mocha", "tests", "--reporter", "spec"]

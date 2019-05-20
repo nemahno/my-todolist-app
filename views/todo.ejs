@@ -1,27 +1,50 @@
 <!DOCTYPE html>
-
 <html>
     <head>
         <title>My todolist</title>
         <style>
             a {text-decoration: none; color: black;}
         </style>
-    </head>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
+        <script type="text/javascript">
+           $(document).ready(function () {
+           	$('button.save_btn').hide();
+           });
+
+           function edit_task(task_id){
+               document.getElementById('input_' + task_id).readOnly = false;
+               $('#input_' + task_id).focus();
+               $('#save_btn_' + task_id).show();
+               $('#edit_btn_' + task_id).hide();
+           }
+        </script>
+
+    </head>
     <body>
         <h1>My todolist</h1>
         <ul>
         <% todolist.forEach(function(todo, index) { %>
-            <li><a href="/todo/delete/<%= index %>">✘</a> <%- todo %></li>
+            <li>
+               <form action="/todo/edit/<%= index %>" method="post">
+               <p>
+               <a href="/todo/delete/<%= index %>">✘</a>
+               <input type="text" name="newedit" readonly="readonly" id="input_<%= index %>" value="<%= todo %>" >
+               <button id="edit_btn_<%= index %>" type=button onClick="edit_task(<%= index %>)">Edit</button>
+               <button class="save_btn" id="save_btn_<%= index %>" type="submit">save</button>
+               </form>
+               </p>
+            </li>
         <% }); %>
         </ul>
 
         <form action="/todo/add/" method="post">
             <p>
                 <label for="newtodo">What shoud I do?</label>
-                <input type="text" name="newtodo" id="newtodo" autofocus />
+                <input type="text" name="newtodo" id="newtodo" />
                 <input type="submit" />
             </p>
         </form>
+
     </body>
 </html>

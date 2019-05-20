@@ -2,6 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
+const PORT = 8080;
+const HOST = 'localhost';
+
 const app = express();
 
 let todolist = [];
@@ -13,6 +16,7 @@ app.get('/todo', function(req, res) {
 
 /* Adding an item to the to do list */
 .post('/todo/add/', urlencodedParser, function(req, res) {
+    console.log(req.body)
     if (req.body.newtodo != '') {
         todolist.push(req.body.newtodo);
     }
@@ -27,9 +31,18 @@ app.get('/todo', function(req, res) {
     res.redirect('/todo');
 })
 
+/* Edit an item from the to do list */
+.post('/todo/edit/:id', urlencodedParser, function(req, res) {
+    if (req.body.newedit != '' && req.params.id != '') {
+        todolist[req.params.id]= req.body.newedit;
+    }
+    res.redirect('/todo');
+})
+
 /* Redirects to the to do list if the page requested is not found */
 .use(function(req, res, next){
     res.redirect('/todo');
 })
 
-.listen(8080);
+.listen(PORT);
+console.log("Running on http://" + HOST+":"+PORT);
