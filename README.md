@@ -14,24 +14,7 @@
 ### Run
 1. docker-compose up
 2. Visit http://localhost:8080 in your browser
-
-### Results
-,,,
-   Recreating mytodolist_web-test_1 ... done
-   Recreating mytodolist_web-app_1  ... done
-   Attaching to mytodolist_web-test_1, mytodolist_web-app_1
-   web-test_1  |
-   web-test_1  |
-   web-app_1   | Running on http://localhost:8080
-   web-test_1  |   ✓ Main Page Content (46ms)
-   web-test_1  |   ✓ Add Task Page Content
-   web-test_1  |   ✓ Edit Task Page Content
-   web-test_1  |   ✓ Delete Task Page Content
-   web-test_1  |
-   web-test_1  |   4 passing (128ms)
-   web-test_1  |
-   mytodolist_web-test_1 exited with code 0
-,,,
+   - Replace localhost with your docker-machine ip
 
 ### High level application requirements
 1. Multiple users should be able to view the shared public todo list
