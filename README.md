@@ -16,7 +16,7 @@
 2. Visit http://localhost:8080 in your browser
 
 ### Results
-1.
+,,,
    Recreating mytodolist_web-test_1 ... done
    Recreating mytodolist_web-app_1  ... done
    Attaching to mytodolist_web-test_1, mytodolist_web-app_1
@@ -31,6 +31,7 @@
    web-test_1  |   4 passing (128ms)
    web-test_1  |
    mytodolist_web-test_1 exited with code 0
+,,,
 
 ### High level application requirements
 1. Multiple users should be able to view the shared public todo list
